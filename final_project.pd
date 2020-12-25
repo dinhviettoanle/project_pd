@@ -203,9 +203,9 @@ I like a lot..., f 38;
 #X obj 1125 1489 dac~;
 #X obj 164 758 hsl 128 15 0 3 0 0 empty volume_glock Volume_glockenspiel
 -2 -8 0 10 -262144 -1 -1 12700 1;
-#X obj 510 801 *~;
-#X obj 572 760 hsl 128 15 0 1 0 0 empty volume_random Volume_random
--2 -8 0 10 -262144 -1 -1 2540 1;
+#X obj 523 857 *~;
+#X obj 585 816 hsl 128 15 0 1 0 0 empty volume_random Volume_random
+-2 -8 0 10 -262144 -1 -1 1700 1;
 #X obj 1193 1371 *~;
 #X obj 527 424 s main_metro;
 #X obj 618 619 r main_metro;
@@ -213,7 +213,7 @@ I like a lot..., f 38;
 #X obj 643 424 s main_bang;
 #X obj 315 601 r main_bang;
 #X obj 509 620 r main_bang;
-#X msg 681 688 0;
+#X msg 741 742 0;
 #X msg 238 691 0;
 #X obj 757 427 s set_tempo;
 #X obj 527 374 metro;
@@ -483,13 +483,13 @@ I like a lot..., f 38;
 #X obj 815 617 r main_metro;
 #X obj 917 616 r main_bang;
 #X obj 828 827 *~;
-#X obj 984 765 hsl 128 15 0.01 1 0 0 empty volume_bass Volume_bass
--2 -8 0 10 -262144 -1 -1 11417 1;
+#X obj 984 765 hsl 128 15 0 1 0 0 empty volume_bass Volume_bass -2
+-8 0 10 -262144 -1 -1 10600 1;
 #X msg 1077 700 0;
 #X obj 1381 691 cnv 15 200 80 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 1415 714 hsl 128 15 0 1 0 0 empty feedback_gain Feedback_gain
--2 -8 0 10 -262144 -1 -1 6200 1;
+-2 -8 0 10 -262144 -1 -1 6700 1;
 #X obj 1409 747 tgl 15 0 empty empty Bypass_delay 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 1015 62 cnv 15 200 400 empty empty empty 20 12 0 14 -203904
@@ -714,7 +714,7 @@ lu;
 #X obj 1960 822 cnv 15 150 50 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 1971 841 hsl 128 15 2 200 0 0 empty cut_frq_drums Cut_frq -2
--8 0 10 -262144 -1 -1 12700 1;
+-8 0 10 -262144 -1 -1 7751 1;
 #X obj 1219 1079 *~;
 #X obj 1282 1079 *~;
 #X obj 1299 1032 expr~ -$v1+1;
@@ -779,7 +779,7 @@ lu;
 -1 -1;
 #X obj 2273 966 *~;
 #X obj 2438 946 hsl 128 15 0 1 0 0 empty volume_record Volume_record
--2 -8 0 10 -262144 -1 -1 6350 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X msg 2517 881 0;
 #X obj 2320 853 freeverb~;
 #X obj 2593 641 cnv 15 150 50 empty empty empty 20 12 0 14 -203904
@@ -817,7 +817,7 @@ lu;
 #X obj 2578 711 cnv 15 170 50 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 2594 733 hsl 128 15 0 1 0 0 empty reverb_dry_wet empty -2 -8
-0 10 -262144 -1 -1 6350 1;
+0 10 -262144 -1 -1 5300 1;
 #X text 2582 713 dry;
 #X text 2707 716 wet;
 #X text 2214 625 Automation;
@@ -837,15 +837,9 @@ lu;
 0 1;
 #X text 1301 150 RECORD;
 #X text 1087 72 VOLUME;
-#X obj 231 132 cnv 15 230 320 empty empty empty 20 12 0 14 -204288
+#X obj 175 122 cnv 15 300 320 empty empty empty 20 12 0 14 -204288
 -66577 0;
-#X text 245 150 1.Choose MIDI Keyboard & mic;
-#X msg 262 173 \; pd dsp 1 \; volume_glock 3 \; volume_random 0.2 \;
-volume_delay 0.3 \; volume_bass 0.9 \; volume_drums 0.8 \; volume_record
-0.5 \; main_right 1 \; main_left 1 \; main_both 1 \; feedback_gain
-0.4 \; kick_t 1 \; side_t 1 \; hihat_t 1 \; cut_frq_record 200 \; reverb_dry_wet
-0.5 \;;
-#X text 244 175 2;
+#X text 188 182 2;
 #X obj 589 104 cnv 15 200 100 empty empty empty 20 12 0 14 -204288
 -66577 0;
 #X obj 607 169 bng 25 250 50 0 empty empty empty 17 7 0 10 -262144
@@ -983,6 +977,76 @@ in the left output In the right output : same triangle \, but inverted
 -66577 0;
 #X text 1675 1307 Channel slider;
 #X msg 1642 1306 24;
+#X text 189 140 1.Choose MIDI Keyboard (+ Controller) & microphone
+, f 37;
+#X floatatom 2647 894 5 0 0 0 - - -;
+#N canvas 0 50 859 593 kontrol 0;
+#X obj 97 199 spigot;
+#X obj 95 71 bendin;
+#X obj 74 137 / 16383;
+#X obj 225 44 inlet;
+#X obj 103 241 outlet;
+#X obj 155 141 ==;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 1 1 5 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 1;
+#X connect 5 0 0 1;
+#X restore 2648 867 pd kontrol;
+#X obj 2648 815 r main_bang;
+#X obj 2641 838 cnv 15 150 25 empty empty empty 20 12 0 14 -232576
+-66577 0;
+#X text 2683 840 Channel slider;
+#X msg 2648 841 23;
+#X floatatom 569 842 5 0 0 0 - - -;
+#X floatatom 929 798 5 0 0 0 - - -;
+#X msg 206 180 \; pd dsp 1 \; volume_glock 3 \; volume_random 0.15
+\; volume_delay 0.3 \; volume_bass 0.9 \; volume_drums 0.8 \; volume_record
+0.5 \; main_right 1 \; main_left 1 \; main_both 1 \; feedback_gain
+0.4 \; kick_t 1 \; side_t 1 \; hihat_t 1 \; cut_frq_record 200 \; reverb_dry_wet
+0.4 \;;
+#X msg 295 687 3;
+#X floatatom 670 728 5 0 0 0 - - -;
+#N canvas 0 50 859 593 kontrol 0;
+#X obj 97 199 spigot;
+#X obj 95 71 bendin;
+#X obj 74 137 / 16383;
+#X obj 225 44 inlet;
+#X obj 103 241 outlet;
+#X obj 155 141 ==;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 1 1 5 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 1;
+#X connect 5 0 0 1;
+#X restore 671 701 pd kontrol;
+#X obj 671 649 r main_bang;
+#X obj 664 672 cnv 15 150 25 empty empty empty 20 12 0 14 -232576 -66577
+0;
+#X text 706 674 Channel slider;
+#X msg 671 675 21;
+#X floatatom 1041 685 5 0 0 0 - - -;
+#N canvas 0 50 859 593 kontrol 0;
+#X obj 97 199 spigot;
+#X obj 95 71 bendin;
+#X obj 74 137 / 16383;
+#X obj 225 44 inlet;
+#X obj 103 241 outlet;
+#X obj 155 141 ==;
+#X connect 0 0 4 0;
+#X connect 1 0 2 0;
+#X connect 1 1 5 0;
+#X connect 2 0 0 0;
+#X connect 3 0 5 1;
+#X connect 5 0 0 1;
+#X restore 1042 658 pd kontrol;
+#X obj 1042 606 r main_bang;
+#X obj 1035 629 cnv 15 150 25 empty empty empty 20 12 0 14 -232576
+-66577 0;
+#X text 1077 631 Channel slider;
+#X msg 1042 632 22;
 #X connect 0 0 1 0;
 #X connect 1 0 34 0;
 #X connect 1 0 35 0;
@@ -992,7 +1056,7 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 5 0 1 1;
 #X connect 6 0 8 0;
 #X connect 6 0 33 0;
-#X connect 7 0 6 1;
+#X connect 7 0 189 0;
 #X connect 8 0 4 1;
 #X connect 8 0 101 0;
 #X connect 8 0 99 1;
@@ -1000,6 +1064,7 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 11 0 0 0;
 #X connect 13 0 0 1;
 #X connect 13 0 39 0;
+#X connect 13 0 192 0;
 #X connect 14 0 3 0;
 #X connect 15 0 7 0;
 #X connect 16 0 5 0;
@@ -1032,7 +1097,7 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 42 0 40 1;
 #X connect 43 0 33 0;
 #X connect 43 0 8 0;
-#X connect 44 0 43 1;
+#X connect 44 0 190 0;
 #X connect 45 0 44 0;
 #X connect 47 0 30 1;
 #X connect 48 0 30 2;
@@ -1040,7 +1105,7 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 52 0 55 0;
 #X connect 54 0 50 0;
 #X connect 55 0 53 0;
-#X connect 56 0 124 0;
+#X connect 56 0 122 0;
 #X connect 57 0 43 0;
 #X connect 58 0 60 0;
 #X connect 59 0 60 1;
@@ -1066,8 +1131,8 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 78 0 70 0;
 #X connect 80 0 78 0;
 #X connect 81 0 78 0;
-#X connect 82 0 121 0;
-#X connect 82 1 121 0;
+#X connect 82 0 119 0;
+#X connect 82 1 119 0;
 #X connect 83 0 12 0;
 #X connect 84 0 9 0;
 #X connect 85 0 33 0;
@@ -1076,46 +1141,61 @@ in the left output In the right output : same triangle \, but inverted
 #X connect 87 0 86 0;
 #X connect 88 0 85 0;
 #X connect 88 1 85 0;
-#X connect 90 0 121 1;
+#X connect 90 0 119 1;
 #X connect 91 0 88 0;
 #X connect 91 1 88 0;
 #X connect 93 0 91 0;
-#X connect 100 0 119 0;
-#X connect 101 0 120 0;
+#X connect 100 0 117 0;
+#X connect 101 0 118 0;
 #X connect 104 0 103 0;
 #X connect 108 0 107 0;
-#X connect 116 0 2 0;
-#X connect 116 0 21 0;
-#X connect 119 0 122 0;
-#X connect 120 0 105 0;
-#X connect 121 0 88 0;
-#X connect 123 0 102 0;
-#X connect 124 0 55 0;
-#X connect 124 0 54 0;
-#X connect 143 0 144 0;
-#X connect 144 0 145 0;
-#X connect 144 1 147 0;
+#X connect 114 0 2 0;
+#X connect 114 0 21 0;
+#X connect 117 0 120 0;
+#X connect 118 0 105 0;
+#X connect 119 0 88 0;
+#X connect 121 0 102 0;
+#X connect 122 0 55 0;
+#X connect 122 0 54 0;
+#X connect 141 0 142 0;
+#X connect 142 0 143 0;
+#X connect 142 1 145 0;
+#X connect 143 0 99 0;
+#X connect 144 0 99 0;
 #X connect 145 0 99 0;
-#X connect 146 0 99 0;
-#X connect 147 0 99 0;
-#X connect 148 0 149 0;
-#X connect 149 0 143 0;
-#X connect 149 1 146 0;
-#X connect 152 0 116 0;
-#X connect 153 0 47 0;
-#X connect 154 0 153 0;
-#X connect 155 0 176 0;
-#X connect 156 0 70 0;
-#X connect 157 0 159 0;
-#X connect 158 0 179 0;
-#X connect 159 0 156 0;
-#X connect 160 0 56 0;
-#X connect 162 0 166 0;
-#X connect 163 0 165 0;
-#X connect 164 0 183 0;
-#X connect 165 0 162 0;
-#X connect 171 0 170 0;
-#X connect 171 1 169 0;
-#X connect 176 0 154 0;
-#X connect 179 0 157 0;
-#X connect 183 0 163 0;
+#X connect 146 0 147 0;
+#X connect 147 0 141 0;
+#X connect 147 1 144 0;
+#X connect 150 0 114 0;
+#X connect 151 0 47 0;
+#X connect 152 0 151 0;
+#X connect 153 0 174 0;
+#X connect 154 0 70 0;
+#X connect 155 0 157 0;
+#X connect 156 0 177 0;
+#X connect 157 0 154 0;
+#X connect 158 0 56 0;
+#X connect 160 0 164 0;
+#X connect 161 0 163 0;
+#X connect 162 0 181 0;
+#X connect 163 0 160 0;
+#X connect 169 0 168 0;
+#X connect 169 1 167 0;
+#X connect 174 0 152 0;
+#X connect 177 0 155 0;
+#X connect 181 0 161 0;
+#X connect 183 0 86 0;
+#X connect 184 0 183 0;
+#X connect 185 0 188 0;
+#X connect 188 0 184 0;
+#X connect 189 0 6 1;
+#X connect 190 0 43 1;
+#X connect 192 0 5 0;
+#X connect 193 0 7 0;
+#X connect 194 0 193 0;
+#X connect 195 0 198 0;
+#X connect 198 0 194 0;
+#X connect 199 0 44 0;
+#X connect 200 0 199 0;
+#X connect 201 0 204 0;
+#X connect 204 0 200 0;
