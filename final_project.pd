@@ -202,10 +202,10 @@ I like a lot..., f 38;
 #X restore 509 690 pd random_melody;
 #X obj 1125 1489 dac~;
 #X obj 164 758 hsl 128 15 0 3 0 0 empty volume_glock Volume_glockenspiel
--2 -8 0 10 -262144 -1 -1 12700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 523 857 *~;
 #X obj 585 816 hsl 128 15 0 1 0 0 empty volume_random Volume_random
--2 -8 0 10 -262144 -1 -1 1700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 1193 1371 *~;
 #X obj 527 424 s main_metro;
 #X obj 618 619 r main_metro;
@@ -262,7 +262,7 @@ I like a lot..., f 38;
 #X obj 2026 1527 *~ 1;
 #X obj 1219 866 *~;
 #X obj 1399 833 hsl 128 15 0 1 0 0 empty volume_delay Volume_delay
--2 -8 0 10 -262144 -1 -1 3810 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #N canvas -9 -9 1920 976 delay_effect 0;
 #X obj 297 281 delread~ delay 500;
 #X obj 299 169 delwrite~ delay 500;
@@ -484,12 +484,12 @@ I like a lot..., f 38;
 #X obj 917 616 r main_bang;
 #X obj 828 827 *~;
 #X obj 984 765 hsl 128 15 0 1 0 0 empty volume_bass Volume_bass -2
--8 0 10 -262144 -1 -1 10600 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X msg 1077 700 0;
 #X obj 1381 691 cnv 15 200 80 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 1415 714 hsl 128 15 0 1 0 0 empty feedback_gain Feedback_gain
--2 -8 0 10 -262144 -1 -1 6700 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X obj 1409 747 tgl 15 0 empty empty Bypass_delay 17 7 0 10 -262144
 -1 -1 0 1;
 #X obj 1015 62 cnv 15 200 400 empty empty empty 20 12 0 14 -203904
@@ -685,16 +685,16 @@ lu;
 #X restore 1745 824 pd drums_part;
 #X obj 1723 1025 *~;
 #X obj 1847 987 hsl 128 15 0 1 0 0 empty volume_drums Volume_drums
--2 -8 0 10 -262144 -1 -1 10160 1;
+-2 -8 0 10 -262144 -1 -1 0 1;
 #X msg 1926 922 0;
 #X obj 1858 651 cnv 15 150 90 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 1882 661 tgl 15 0 empty kick_t Kick 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #X obj 1882 688 tgl 15 0 empty side_t Side_Stick 17 7 0 10 -262144
--1 -1 1 1;
+-1 -1 0 1;
 #X obj 1883 717 tgl 15 0 empty hihat_t Hihat 17 7 0 10 -262144 -1 -1
-1 1;
+0 1;
 #N canvas -9 -9 1920 976 filter_drums 0;
 #X obj 137 84 inlet~;
 #X obj 401 75 inlet;
@@ -714,7 +714,7 @@ lu;
 #X obj 1960 822 cnv 15 150 50 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 1971 841 hsl 128 15 2 200 0 0 empty cut_frq_drums Cut_frq -2
--8 0 10 -262144 -1 -1 7751 1;
+-8 0 10 -262144 -1 -1 0 1;
 #X obj 1219 1079 *~;
 #X obj 1282 1079 *~;
 #X obj 1299 1032 expr~ -$v1+1;
@@ -785,7 +785,7 @@ lu;
 #X obj 2593 641 cnv 15 150 50 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 2603 661 hsl 128 15 2 200 0 0 empty cut_frq_record Cut_frq -2
--8 0 10 -262144 -1 -1 12700 1;
+-8 0 10 -262144 -1 -1 0 1;
 #N canvas 140 264 1471 639 set_dry_wet 0;
 #X obj 251 124 inlet;
 #X obj 212 315 outlet;
@@ -817,7 +817,7 @@ lu;
 #X obj 2578 711 cnv 15 170 50 empty empty empty 20 12 0 14 -203904
 -66577 0;
 #X obj 2594 733 hsl 128 15 0 1 0 0 empty reverb_dry_wet empty -2 -8
-0 10 -262144 -1 -1 5300 1;
+0 10 -262144 -1 -1 0 1;
 #X text 2582 713 dry;
 #X text 2707 716 wet;
 #X text 2214 625 Automation;
@@ -910,6 +910,8 @@ in the left output In the right output : same triangle \, but inverted
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
@@ -926,6 +928,8 @@ in the left output In the right output : same triangle \, but inverted
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
@@ -946,6 +950,8 @@ in the left output In the right output : same triangle \, but inverted
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
@@ -980,13 +986,15 @@ in the left output In the right output : same triangle \, but inverted
 #X text 189 140 1.Choose MIDI Keyboard (+ Controller) & microphone
 , f 37;
 #X floatatom 2647 894 5 0 0 0 - - -;
-#N canvas 0 50 859 593 kontrol 0;
+#N canvas 0 50 859 593 kontrol 1;
 #X obj 97 199 spigot;
 #X obj 95 71 bendin;
 #X obj 74 137 / 16383;
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
@@ -1015,6 +1023,8 @@ in the left output In the right output : same triangle \, but inverted
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
@@ -1035,6 +1045,8 @@ in the left output In the right output : same triangle \, but inverted
 #X obj 225 44 inlet;
 #X obj 103 241 outlet;
 #X obj 155 141 ==;
+#X text 153 202 If the channel is not correct \, block the message
+;
 #X connect 0 0 4 0;
 #X connect 1 0 2 0;
 #X connect 1 1 5 0;
