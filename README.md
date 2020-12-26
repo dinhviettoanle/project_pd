@@ -1,4 +1,5 @@
 # Projet PureData ATIAM 2020
+_LE Dinh-Viet-Toan_
 
 ## Requirements
 ### Hardware
