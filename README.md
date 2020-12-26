@@ -17,12 +17,12 @@
 - (Optional) Stuff in pink canvases are related to the MIDI controller
 
 Some things can be improved :
-- A bug remains if the patch is not triggered with the bang twice (else, the bass and the drums are out of time)
+- A bug remains if the patch is not triggered with the bang twice (else, the bass and the drums are out of time) : it seems to be a problem in the initialization of the step sequencers...
 
 ## Timeline _record.wav_
 0:00 > Glockenspiel samples played in a step sequencer  
 0:09 > Bass : triangle oscillator in a step sequencer connected to amplitude modulation   
-0:25 > Melody with random pitch and rythm  
+0:25 > Melody with random pitch and rhythm  
 0:41 -  1:05 > Drums (kick, side stick, hi-hat) samples played in a step sequencer connected to a VCF   
 1:13 > MIDI Keyboard connected to a delay effect  
 1:53 > Out of tune external recording of a violin connected to a reverb effect   
